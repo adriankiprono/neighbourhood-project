@@ -7,3 +7,6 @@ def home(request):
 
     neighbourhood = Neighbourhood.objects.all()
     return render(request, 'home.html',locals())
+
+def registerView(request):
+    return render(request,'registration/register.html')
