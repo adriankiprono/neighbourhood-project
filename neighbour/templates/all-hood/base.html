@@ -1,11 +1,30 @@
+{%load bootstrap4%}
+{% load static%}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>hood</title>
+    {%if title%}
+    <title>hood- {{title}}</title>
+    {%else%}
+        <title>hood</title>
+    {%endif%}
+    {% block styles %}
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/base-hood.css' %}">
+    {% bootstrap_css %}
+  {% endblock %}
 </head>
 <body>
+        {% include "all-hood/navbar.html" %}
+    {%block content%}
+    <h1 class='text-center'>hello there!</h1>
+    {%endblock%}
+    {% block scripts %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     {% bootstrap_javascript %}
+    {% endblock %}
     
 </body>
 </html>
