@@ -8,6 +8,7 @@ class Neighbourhood(models.Model):
     occupants=models.PositiveIntegerField(null=True)
     health_tell = models.IntegerField(null=True, blank=True)
     police_number = models.IntegerField(null=True, blank=True)
+    neighbourhood_picture = models.ImageField(upload_to='avatar/', default='default.jpg')
     
     
 
@@ -49,6 +50,8 @@ class Profile(models.Model):
     name = models.CharField(max_length=80, blank=True)
     bio = models.TextField(max_length=254, blank=True)
     location = models.CharField(max_length=50, blank=True, null=True)
+    profile_picture = models.ImageField(upload_to='images/', default='default.png')
+
 
 
 
