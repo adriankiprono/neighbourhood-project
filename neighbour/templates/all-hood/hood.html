@@ -9,15 +9,17 @@
    </div>
 
    <div class="row">
-     <h1 class="text-center">{{article.title}}</h1>
+     <h1 class="text-center">{{neighbourhood.name}}</h1>
    </div>
 
    <div class="row">
-     <p>{{article.post}}</p>
+        {% autoescape on %}
+        {{neighbourhood.name| safe}}
+       {% endautoescape %}
    </div>
 
    <div class="row">
-     <p>Posted {{article.pub_date|timesince}} by {{article.editor.first_name}}</p>
+     <p>Posted {{neighbourhood.location}} by {{neighbourhood.profile}}</p>
    </div>
 
  </div>

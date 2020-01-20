@@ -2,3 +2,17 @@ h1{
     font-family: 'Dancing Script', cursive;
     color: rgb(43, 29, 59);
 }
+.intro{
+    font-family: 'IM Fell Great Primer SC', serif;
+    text-decoration: underline;
+    font-size: 60px;
+    text-align: center;
+
+}
+body{
+    background-color: antiquewhite;
+    background-image: url('http://mobilecustomerconnect.com/wp-content/uploads/2014/06/Community-Icon.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
