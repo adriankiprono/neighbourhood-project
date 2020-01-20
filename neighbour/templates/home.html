@@ -1,32 +1,22 @@
 {%extends 'all-hood/base.html'%}
 {% block content %}
 {{block.super}}
-<div class="container" >
+<div class="container-fluid" style="position: absolute;padding-left: 280px;" >
     {%for neighbourhoo in neighbourhood%}
-        <div class="row">
-            <div class="col-md-4">
-                <h2 class="text-center">{{neighbourhoo.user_name}}</h2>
-
-
-            </div>
-            <div class="col-md-4">
+        <div class="card text-white bg-primary mb-3" style="max-width: 50rem; text-align: center;">
+            <div class="card-body ">
+                    <h5 class="card-title">{{ neighbourhoo.name }}</h5>
+                    <p class="card-text">{{neighbourhoo.description}}</p>
                     <h2 class="text-center">{{neighbourhoo.location}}</h2>
-
-    
-                </div>
-                <div class="col-md-4">
-                        <h2 class="text-center">{{neighbourhoo.occupants}}</h2>
-
-        
-                    </div>
+                    <p class="card-text"><large class=" ">{{neighbourhoo.occupants}}</large></p>
+            </div>
+            <img class="card-img-bottom" src="{{neighbourhoo.neighbourhood_picture.url}}" alt="Card image cap">
         </div>
         {%empty%}
-        <div class="row">
+        <div class="jumbotron">
             <h2 class="text-center">There are no hoods</h2>
         </div>
         {% endfor %}
     
-    </div>
-    
-    
+    </div>  
 {% endblock %}
