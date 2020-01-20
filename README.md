@@ -10,12 +10,13 @@
  - A user create a profile of  a user's neighbourhood
  - After that a user a can see the different businesses in many neighbourhood 
  - A user can post a neigbourhood along with the business and occupants
+ - A user can search business
 
 
  
 ## Installing 
 
-To view the application go to [click here](https://github.com/adriankiprono/neighbourhood-project.git )
+To view the application go to [click here](https://adriano-hood.herokuapp.com/ )
 
 - Step 1: Clone this repo :git clone (https://github.com/adriankiprono/neighbourhood-project.git)
 
