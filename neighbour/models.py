@@ -14,6 +14,11 @@ class Neighbourhood(models.Model):
     profile=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
     post = models.TextField(null=True)
 
+    def save_neighbourhood(self):
+        self.save()
+    def delete_neighbourhood(self):
+        self.delete()
+
     
     def __str__(self):
         return self.name
@@ -45,6 +50,10 @@ class Business(models.Model):
     def search_by_business_name(cls,search_term):
         business=cls.objects.filter(business_name__icontains=search_term)
         return business
+    def save_business(self):
+        self.save()
+    def delete_business(self):
+        self.delete()
 
 
     def __str__(self):
