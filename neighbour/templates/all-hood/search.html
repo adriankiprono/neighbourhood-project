@@ -1,6 +1,6 @@
 {%extends 'all-hood/base.html'%} 
 {% block content %}
-<div class="container">
+<div class="container-fluid">
 
   <div class="row">
     {% if business%}
@@ -16,7 +16,15 @@
   {% if business %}
     {% for busines in business %}
       <div class="col-sm-6 col-md-3">
-          <h1>{{busines.business_name}}</h1>
+            <div class="card">
+                    <div class="card-header">name:{{busines.business_name}}</div>
+                    <div class="card-body">email:{{busines.business_email}}</div>
+                    <div class="card-body">owner:{{busines.user}}</div>
+                    <div class="card-footer">neighbourhood:{{busines.neighbourhood}}</div>
+
+                  </div>
+          
+          
       </div>
     {% endfor %}
   {% endif %}

@@ -3,14 +3,23 @@
 {{block.super}}
 <div class="container-fluid" style="position: absolute;padding-left: 280px;" >
     {%for neighbourhoo in neighbourhood%}
+    <!-- displaying website -->
         <div class="card text-white bg-primary mb-3" style="max-width: 50rem; text-align: center;">
             <div class="card-body ">
-                    <h5 class="card-title">{{ neighbourhoo.name }}</h5>
-                    <p class="card-text">{{neighbourhoo.description}}</p>
-                    <h2 class="text-center">{{neighbourhoo.location}}</h2>
-                    <p class="card-text"><large class=" ">{{neighbourhoo.occupants}}</large></p>
+                    <h5 class="card-title">NAME:{{ neighbourhoo.name }}</h5>
+                    
+                    <h2 class="text-center"> LOCATION:{{neighbourhoo.location}}</h2>
+                    <p class="card-text"><large class=" "></large></p>
             </div>
+             <!--Display news  images  -->
             <img class="card-img-bottom" src="{{neighbourhoo.neighbourhood_picture.url}}" alt="Card image cap">
+            <div class="card-body">
+                    <h4 class="card-title"> OCCUPANTS:{{neighbourhoo.occupants}}</h4>
+                    <p class="card-text">{{neighbourhoo.description}}</p>
+                    <p class="card-text">health no.:{{neighbourhoo.health_tell}}</p>
+                    <p class="card-text">police no.:{{neighbourhoo.police_number}}</p>
+                    
+                  </div>
         </div>
         {%empty%}
         <div class="jumbotron">
