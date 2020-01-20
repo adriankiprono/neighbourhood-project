@@ -9,9 +9,6 @@ class Neighbourhood(models.Model):
     health_tell = models.CharField(max_length=12,null=True, blank=True)
     police_number = models.CharField(max_length=12,null=True, blank=True)
     neighbourhood_picture = models.ImageField(upload_to='avatar/', default='default.jpg')
-    
-    
-
 
     def __str__(self):
         return self.name
@@ -25,6 +22,7 @@ class User(models.Model):
     user_id =models.AutoField(primary_key=True)
     email=models.EmailField(max_length=100,null=True)
     neighbourhood=models.ForeignKey('Neighbourhood',on_delete=models.CASCADE,)
+    
 
     def __str__(self):
         return self.user_name
@@ -51,6 +49,7 @@ class Business(models.Model):
         ordering = ['business_name']
 
 class Profile(models.Model):
+    profile_name= models.CharField(max_length=255,null=True)
     user = models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True,related_name='profile')
     neighbourhood=models.ForeignKey('Neighbourhood',on_delete=models.CASCADE,null=True)
     name = models.CharField(max_length=80, blank=True)

@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from .models import Neighbourhood,Business,User,Profile
+from django.http import HttpResponse,Http404
 
 from django.contrib.auth.decorators import login_required
 
@@ -23,4 +24,11 @@ def search_results(request):
     else:
         message = "You haven't searched for any term"
         return render(request, 'all-hood/search.html',{"message":message})
+
+def neighbourhood(request,neighbourhood_id):
+    try:
+        neigbourhood = Neighbourhood.objects.get(id = Neighbourhood_id)
+    except DoesNotExist:
+        raise Http404()
+    return render(request,"all-hood/hood.html", locals())
 
