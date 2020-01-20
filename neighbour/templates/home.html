@@ -1,22 +1,21 @@
 {%extends 'all-hood/base.html'%}
-
 {% block content %}
 {{block.super}}
-<div class="container-fluid" >
-        {%for neighbourhood in neighbourhoods%}
+<div class="container" >
+    {%for neighbourhoo in neighbourhood%}
         <div class="row">
             <div class="col-md-4">
-                <h2 class="text-center">{{neighbourhood.user_name}}</h2>
+                <h2 class="text-center">{{neighbourhoo.user_name}}</h2>
 
 
             </div>
             <div class="col-md-4">
-                    <h2 class="text-center">{{neighbourhood.location}}</h2>
+                    <h2 class="text-center">{{neighbourhoo.location}}</h2>
 
     
                 </div>
                 <div class="col-md-4">
-                        <h2 class="text-center">{{neighbourhood.occupants}}</h2>
+                        <h2 class="text-center">{{neighbourhoo.occupants}}</h2>
 
         
                     </div>

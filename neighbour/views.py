@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import *
+from .models import Neighbourhood,Business,User,Profile
 
 from django.contrib.auth.decorators import login_required
 

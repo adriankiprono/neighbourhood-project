@@ -4,7 +4,14 @@ from django.db import models
 class Neighbourhood(models.Model):
     name=models.CharField(max_length=40,null=True)
     location=models.CharField(max_length=40,null=True)
+    description = models.TextField(max_length=400,null=True)
     occupants=models.PositiveIntegerField(null=True)
+    health_tell = models.IntegerField(null=True, blank=True)
+    police_number = models.IntegerField(null=True, blank=True)
+    
+    
+
+
     def __str__(self):
         return self.name
 
@@ -37,8 +44,11 @@ class Business(models.Model):
         ordering = ['business_name']
 
 class Profile(models.Model):
-    user = models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True,)
-    
+    user = models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True,related_name='profile')
+    neighbourhood=models.ForeignKey('Neighbourhood',on_delete=models.CASCADE,null=True)
+    name = models.CharField(max_length=80, blank=True)
+    bio = models.TextField(max_length=254, blank=True)
+    location = models.CharField(max_length=50, blank=True, null=True)
 
 
 
