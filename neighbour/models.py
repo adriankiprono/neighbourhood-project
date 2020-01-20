@@ -6,8 +6,8 @@ class Neighbourhood(models.Model):
     location=models.CharField(max_length=40,null=True)
     description = models.TextField(max_length=400,null=True)
     occupants=models.PositiveIntegerField(null=True)
-    health_tell = models.IntegerField(null=True, blank=True)
-    police_number = models.IntegerField(null=True, blank=True)
+    health_tell = models.CharField(max_length=12,null=True, blank=True)
+    police_number = models.CharField(max_length=12,null=True, blank=True)
     neighbourhood_picture = models.ImageField(upload_to='avatar/', default='default.jpg')
     
     
@@ -37,6 +37,12 @@ class Business(models.Model):
     business_email=models.EmailField(max_length=100,null=True)
     neighbourhood=models.ForeignKey('Neighbourhood',on_delete=models.CASCADE,)
     user=models.ForeignKey('User',on_delete=models.CASCADE,)
+
+    @classmethod
+    def search_by_business_name(cls,search_term):
+        business=cls.objects.filter(business_name__icontains=search_term)
+        return business
+
 
     def __str__(self):
         return self.business_name
