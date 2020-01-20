@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from tinymce.models import HTMLField
 
 # Create your models here.
 class Neighbourhood(models.Model):
@@ -10,8 +11,10 @@ class Neighbourhood(models.Model):
     health_tell = models.CharField(max_length=12,null=True, blank=True)
     police_number = models.CharField(max_length=12,null=True, blank=True)
     neighbourhood_picture = models.ImageField(upload_to='avatar/', default='default.jpg')
-    post=models.TextField(null=True)
+    profile=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
+    post = models.TextField(null=True)
 
+    
     def __str__(self):
         return self.name
 
@@ -53,11 +56,12 @@ class Business(models.Model):
 class Profile(models.Model):
     profile_name= models.CharField(max_length=255,null=True)
     user = models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True,related_name='profile')
-    neighbourhood=models.ForeignKey('Neighbourhood',on_delete=models.CASCADE,null=True)
     name = models.CharField(max_length=80, blank=True)
     bio = models.TextField(max_length=254, blank=True)
     location = models.CharField(max_length=50, blank=True, null=True)
     profile_picture = models.ImageField(upload_to='images/', default='default.png')
+
+
 
 
 

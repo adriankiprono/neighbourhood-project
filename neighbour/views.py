@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import Neighbourhood,Business,User,Profile
 from django.http import HttpResponse,Http404
-
+from .forms import NewHoodForm
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -25,6 +25,8 @@ def search_results(request):
         message = "You haven't searched for any term"
         return render(request, 'all-hood/search.html',{"message":message})
 
+
+@login_required(login_url='/accounts/login/')
 def neighbourhood(request,neighbourhood_id):
     try:
         neigbourhood = Neighbourhood.objects.get(id = Neighbourhood_id)
@@ -32,3 +34,17 @@ def neighbourhood(request,neighbourhood_id):
         raise Http404()
     return render(request,"all-hood/hood.html", locals())
 
+@login_required(login_url='/accounts/login/')
+def new_neighbourhood(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = NewHoodForm(request.POST, request.FILES)
+        if form.is_valid():
+            neighbourhood = form.save(commit=False)
+            neighbourhood.profile = current_user
+            neighbourhood.save()
+        return redirect('home')
+
+    else:
+        form = NewHoodForm()
+    return render(request, 'all-hood/new_hood.html', {"form": form})
