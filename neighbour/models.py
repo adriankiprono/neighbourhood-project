@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Neighbourhood(models.Model):
@@ -9,6 +10,7 @@ class Neighbourhood(models.Model):
     health_tell = models.CharField(max_length=12,null=True, blank=True)
     police_number = models.CharField(max_length=12,null=True, blank=True)
     neighbourhood_picture = models.ImageField(upload_to='avatar/', default='default.jpg')
+    post=models.TextField(null=True)
 
     def __str__(self):
         return self.name
